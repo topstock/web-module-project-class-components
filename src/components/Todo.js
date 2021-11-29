@@ -5,11 +5,14 @@ class Todo extends React.Component {
   constructor (props) {
     super(props);
   }
-    
+
+  
+
   render() {
+      const handleClick = () => this.props.handleToggleItem(this.props.item); 
       return(
-        <div>
-          <p>{this.props.task}</p>
+        <div onClick={handleClick}  className={`${this.props.item.completed ? 'completed' : ''}`}>
+          <p>{this.props.item.task}</p>
         </div>
       );
   }

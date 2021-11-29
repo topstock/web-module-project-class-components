@@ -17,7 +17,8 @@ class TodoForm extends React.Component {
     return (
       <form>
           <input type='text' name='item' />
-          <button>Add</button>
+          <button>Add Todo</button>
+          <button>Clear Completed</button>
       </form>
     );
   }
