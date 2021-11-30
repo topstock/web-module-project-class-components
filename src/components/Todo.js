@@ -6,8 +6,6 @@ class Todo extends React.Component {
     super(props);
   }
 
-  
-
   render() {
       const handleClick = () => this.props.handleToggleItem(this.props.item); 
       return(

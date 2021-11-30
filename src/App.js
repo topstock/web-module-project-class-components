@@ -21,8 +21,36 @@ class App extends React.Component {
           id: 1234345640987,
           completed: false
         }
-      ]
+      ],
+      input: ''
     }
+  }
+
+  handleChange = inputText => {
+    this.setState({
+      ...this.state,
+      input: inputText
+    });
+  }
+
+  handleAddItem = () => {
+    const newItem = {
+      task: this.state.input,
+      id: Date.now(),
+      completed: false
+    };
+
+    this.setState({
+      ...this.state,
+      todos: [...this.state.todos, newItem]
+    });
+  }
+  
+  handleClearCompleted = () => {
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.filter( t => !t.completed )
+    });
   }
 
   handleToggleItem = (item) => {
@@ -43,7 +71,11 @@ class App extends React.Component {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList handleToggleItem={this.handleToggleItem} props={this.state.todos} />
-        <TodoForm props={this.state.todos} />
+        <TodoForm 
+        handleClearCompleted={this.handleClearCompleted}
+        handleAddItem={this.handleAddItem} 
+        props={this.state.todos}
+        handleChange={this.handleChange} />
         
       </div>
     );
